@@ -7,22 +7,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bddf1d1-46fd-43ac-9449-173a7e846d03" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Synergy_game.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clouds.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exporter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fires.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helicopter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/importer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
-    </list>
+    <list default="true" id="0bddf1d1-46fd-43ac-9449-173a7e846d03" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,29 +26,35 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/IvanSkobov/Synergy_game.git",
+    "accountId": "8342cd5f-6a8d-4dbe-aa18-f5fdef8163f4"
+  }
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.620406291428329" />
-      <entry key="MS500" value="4.352441239393471" />
-      <entry key="S2" value="12.41594376162682" />
-      <entry key="S5" value="25.415271726120938" />
-      <entry key="S10" value="38.07717008379451" />
-      <entry key="S30" value="53.79541914432436" />
-      <entry key="S60" value="65.35849432535478" />
-      <entry key="M2" value="87.65906042273048" />
-      <entry key="M5" value="137.8539541781669" />
-      <entry key="M10" value="188.98260220902262" />
-      <entry key="M15" value="218.14949404697268" />
-      <entry key="M30" value="258.1279597026968" />
-      <entry key="H1" value="283.6706272530212" />
-      <entry key="H2" value="298.1763706073311" />
-      <entry key="H4" value="305.9151597268753" />
-      <entry key="D1" value="312.62775559374097" />
-      <entry key="W1" value="313.80334854856386" />
+      <entry key="MS100" value="1.6627644373720032" />
+      <entry key="MS500" value="5.109176245848029" />
+      <entry key="S2" value="12.89834937461976" />
+      <entry key="S5" value="18.86201851492693" />
+      <entry key="S10" value="22.510954529109444" />
+      <entry key="S30" value="25.8984315257685" />
+      <entry key="S60" value="27.251241571596967" />
+      <entry key="M2" value="33.790161280188904" />
+      <entry key="M5" value="76.00391963058064" />
+      <entry key="M10" value="139.6675536435389" />
+      <entry key="M15" value="181.63987822113717" />
+      <entry key="M30" value="244.6410689716949" />
+      <entry key="H1" value="287.88039104839396" />
+      <entry key="H2" value="313.40015289143184" />
+      <entry key="H4" value="327.2897338553926" />
+      <entry key="D1" value="339.48899976888396" />
+      <entry key="W1" value="341.63980269827243" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -85,23 +76,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.572192810035069" />
-      <entry key="MS500" value="4.325830189278476" />
-      <entry key="S2" value="12.396635347638295" />
-      <entry key="S5" value="25.399279727434042" />
-      <entry key="S10" value="38.065156554454525" />
-      <entry key="S30" value="53.78974425649579" />
-      <entry key="S60" value="65.35500536880787" />
-      <entry key="M2" value="87.65665966296972" />
-      <entry key="M5" value="137.85234645114275" />
-      <entry key="M10" value="188.981428736983" />
-      <entry key="M15" value="218.1485638139774" />
-      <entry key="M30" value="258.12739043628545" />
-      <entry key="H1" value="283.67030871960515" />
-      <entry key="H2" value="298.1762016267006" />
-      <entry key="H4" value="305.9150726337765" />
-      <entry key="D1" value="312.6277407009295" />
-      <entry key="W1" value="313.80334641156634" />
+      <entry key="MS100" value="1.6037434609778027" />
+      <entry key="MS500" value="5.075677003625655" />
+      <entry key="S2" value="12.877403461000318" />
+      <entry key="S5" value="18.849564567296213" />
+      <entry key="S10" value="22.503438532598857" />
+      <entry key="S30" value="25.895520474245124" />
+      <entry key="S60" value="27.249706735492317" />
+      <entry key="M2" value="33.78921299378273" />
+      <entry key="M5" value="76.00304335253998" />
+      <entry key="M10" value="139.66670196856842" />
+      <entry key="M15" value="181.63911754120937" />
+      <entry key="M30" value="244.64053843595664" />
+      <entry key="H1" value="287.880072848806" />
+      <entry key="H2" value="313.3999779616336" />
+      <entry key="H4" value="327.2896420538571" />
+      <entry key="D1" value="339.48898383122804" />
+      <entry key="W1" value="341.63980040537604" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -185,7 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1786726840840</updated>
       <workItem from="1786726841850" duration="1727000" />
-      <workItem from="1786728584921" duration="3470000" />
+      <workItem from="1786728584921" duration="3851000" />
     </task>
     <servers />
   </component>
@@ -193,6 +184,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Synergy_game$main.coverage" NAME="main Coverage Results" MODIFIED="1786815747615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Synergy_game$main.coverage" NAME="main Coverage Results" MODIFIED="1786816222204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
