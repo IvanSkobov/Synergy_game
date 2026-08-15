@@ -43,6 +43,8 @@ MAX_LIVES = 20
 START_LIVES = 20
 START_TANK = 0
 MAX_TANK = 5
+SCORE_EXTINGUISH = 10   # очки за тушение
+SCORE_BURN_PENALTY = 5  # штраф, если дерево сгорело
 
 UPGRADE_COST = {
     'tank': 100,

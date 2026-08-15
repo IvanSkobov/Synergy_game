@@ -1,0 +1,2 @@
+# Зависимости проекта (для установки: pip install -r requirements.txt)
+pynput>=1.7.6

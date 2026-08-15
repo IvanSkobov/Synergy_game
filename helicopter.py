@@ -24,40 +24,50 @@ class Helicopter:
     def _set_status(self, message):
         self.status = message
 
-    def move(self, dx, dy):
-        """Перемещает вертолет"""
+    def move(self, dx, dy, map_obj=None, fire_manager=None):
+        """Перемещает вертолет; после хода — авто-действия на клетке"""
         nx = self.x + dx
         ny = self.y + dy
         if 0 <= nx < self.h and 0 <= ny < self.w:
             self.x = nx
             self.y = ny
+            if map_obj is not None:
+                self.process_cell(map_obj, fire_manager)
             return True
         return False
 
-    def move_up(self):
-        """Перемещает вверх"""
-        return self.move(-1, 0)
+    def move_up(self, map_obj=None, fire_manager=None):
+        return self.move(-1, 0, map_obj, fire_manager)
 
-    def move_down(self):
-        """Перемещает вниз"""
-        return self.move(1, 0)
+    def move_down(self, map_obj=None, fire_manager=None):
+        return self.move(1, 0, map_obj, fire_manager)
 
-    def move_left(self):
-        """Перемещает влево"""
-        return self.move(0, -1)
+    def move_left(self, map_obj=None, fire_manager=None):
+        return self.move(0, -1, map_obj, fire_manager)
 
-    def move_right(self):
-        """Перемещает вправо"""
-        return self.move(0, 1)
+    def move_right(self, map_obj=None, fire_manager=None):
+        return self.move(0, 1, map_obj, fire_manager)
 
-    def take_water(self, map_obj):
+    def process_cell(self, map_obj, fire_manager=None):
+        """
+        По заданию: пролетая над водой — берёт воду в резервуар.
+        Над пожаром при наличии воды — тушит дерево.
+        """
+        cell = map_obj.get_cell(self.x, self.y)
+        if cell == 3:
+            self.take_water(map_obj, quiet_if_full=True)
+        elif cell == 2 and self.tank > 0:
+            self.extinguish_fire(map_obj, fire_manager)
+
+    def take_water(self, map_obj, quiet_if_full=False):
         """Забирает воду из реки"""
         if self.tank >= self.mxtank:
-            self._set_status("Резервуар полон!")
+            if not quiet_if_full:
+                self._set_status("Резервуар полон!")
             return False
 
         cell = map_obj.get_cell(self.x, self.y)
-        if cell == 3:  # Вода
+        if cell == 3:
             self.tank += 1
             self._set_status(f"Взята вода! {self.tank}/{self.mxtank}")
             return True
@@ -66,79 +76,78 @@ class Helicopter:
         return False
 
     def extinguish_fire(self, map_obj, fire_manager=None):
-        """Тушит пожар"""
+        """Тушит пожар — получаем очки"""
         if self.tank <= 0:
             self._set_status("Нет воды в резервуаре!")
             return False
 
         cell = map_obj.get_cell(self.x, self.y)
-        if cell == 2:  # Пожар
+        if cell == 2:
             map_obj.set_cell(self.x, self.y, 7)  # Молодое дерево
             if fire_manager is not None:
                 fire_manager.extinguish_fire(self.x, self.y)
             self.tank -= 1
-            self.score += 10
-            self._set_status("🔥 Пожар потушен! +10 очков")
+            self.score += SCORE_EXTINGUISH
+            self._set_status(f"Пожар потушен! +{SCORE_EXTINGUISH} очков")
             return True
 
         self._set_status("Здесь нет пожара!")
         return False
 
+    def lose_points(self, amount):
+        """Штраф за сгоревшее дерево"""
+        self.score = max(0, self.score - amount)
+        self._set_status(f"Дерево сгорело! -{amount} очков (всего {self.score})")
+
     def heal(self, map_obj):
-        """Лечится в госпитале"""
+        """Госпиталь: здоровье за очки"""
         cell = map_obj.get_cell(self.x, self.y)
-        if cell == 5:  # Госпиталь
+        if cell == 5:
             if self.score >= 30 and self.lives < self.max_lives:
                 self.score -= 30
                 self.lives += 1
-                self._set_status(f"🏥 Лечение! Жизней: {self.lives}, Очков: {self.score}")
+                self._set_status(f"Госпиталь! Жизней: {self.lives}")
                 return True
             if self.lives >= self.max_lives:
-                self._set_status("У вас максимальное количество жизней!")
+                self._set_status("Жизни на максимуме!")
             else:
-                self._set_status("Недостаточно очков для лечения! (нужно 30)")
+                self._set_status("Нужно 30 очков для лечения")
             return False
-
         self._set_status("Здесь нет госпиталя!")
         return False
 
     def upgrade_tank(self, map_obj):
-        """Улучшает резервуар в магазине"""
+        """Магазин: увеличить число резервуаров"""
         cell = map_obj.get_cell(self.x, self.y)
-        if cell == 6:  # Магазин
+        if cell == 6:
             cost = UPGRADE_COST['tank'] * self.mxtank
             if self.score >= cost and self.mxtank < MAX_TANK:
                 self.score -= cost
                 self.mxtank += 1
-                self._set_status(f"🏪 Улучшение! Резервуар: {self.mxtank}, Очков: {self.score}")
+                self._set_status(f"Улучшение! Резервуаров: {self.mxtank}")
                 return True
             if self.mxtank >= MAX_TANK:
-                self._set_status("Максимальный резервуар!")
+                self._set_status("Максимум резервуаров!")
             else:
-                self._set_status(f"Недостаточно очков для улучшения! (нужно {cost})")
+                self._set_status(f"Нужно {cost} очков для улучшения")
             return False
-
         self._set_status("Здесь нет магазина!")
         return False
 
     def print_stats(self):
-        """HUD: 🪣 | 🏆 | 💛"""
         print(f'🪣 {self.tank}/{self.mxtank} | 🏆 {self.score} | 💛 {self.lives}')
 
     def take_damage(self):
-        """Наносит урон вертолету (с кулдауном)"""
         if self.damage_cooldown > 0:
             return False
-
         self.lives -= 1
         self.damage_cooldown = DAMAGE_COOLDOWN_TICKS
-        self._set_status(f"💥 Вертолет поврежден! Жизней: {self.lives}")
+        self._set_status(f"Вертолет поврежден! Жизней: {self.lives}")
         if self.lives <= 0:
-            self._set_status("💀 Вертолет уничтожен!")
+            self._set_status("Вертолет уничтожен!")
             return True
         return False
 
     def tick_cooldowns(self):
-        """Уменьшает кулдауны каждый тик"""
         if self.damage_cooldown > 0:
             self.damage_cooldown -= 1

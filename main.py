@@ -97,13 +97,13 @@ class Game:
             return
 
         if k == 'w':
-            self.helicopter.move_up()
+            self.helicopter.move_up(self.map, self.fire_manager)
         elif k == 's':
-            self.helicopter.move_down()
+            self.helicopter.move_down(self.map, self.fire_manager)
         elif k == 'a':
-            self.helicopter.move_left()
+            self.helicopter.move_left(self.map, self.fire_manager)
         elif k == 'd':
-            self.helicopter.move_right()
+            self.helicopter.move_right(self.map, self.fire_manager)
         elif k == ' ':
             self.helicopter.take_water(self.map)
         elif k == 'e':
@@ -161,7 +161,12 @@ class Game:
                 self.game_message = f"🌧 Дождь потушил: {rained}"
                 self.message_ticks = 8
 
-        self.fire_manager.update_fires()
+        self.fire_manager.update_fires(self.helicopter)
+        if self.helicopter.status and not self.game_message:
+            self.game_message = self.helicopter.status
+            self.helicopter.status = ""
+            self.message_ticks = 8
+
         self.fire_manager.grow_trees(tree_grow)
 
         if self.map.get_cell(self.helicopter.x, self.helicopter.y) == 2:
@@ -203,7 +208,7 @@ class Game:
         if self.game_message:
             print(self.game_message)
 
-        print('WASD движ | SPACE вода | E тушить | H/U здания | P пауза | Q выход')
+        print('WASD движ (вода/тушение при пролёте) | H госпиталь | U магазин | P пауза | Q выход')
         if self.paused:
             print('ПАУЗА: S сохранить | L загрузить')
 
